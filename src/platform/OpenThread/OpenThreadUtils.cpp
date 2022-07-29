@@ -133,7 +133,8 @@ void LogOpenThreadStateChange(otInstance * otInst, uint32_t flags)
 #if CHIP_CONFIG_SECURITY_TEST_MODE
         {
 #if OPENTHREAD_API_VERSION >= 126
-            const otNetworkKey * otKey = otThreadGetNetworkKey(otInst);
+            const otNetworkKey * otKey;
+            otThreadGetNetworkKey(otInst, otKey);
             for (int i = 0; i < OT_NETWORK_KEY_SIZE; i++)
 #else
             const otMasterKey * otKey = otThreadGetMasterKey(otInst);
